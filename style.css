@@ -1,0 +1,12 @@
+:root {
+    --left-side-bg-color: #EFEFEF;
+    --right-side-bg-color: #FFFFFF;
+    --button-main-color: #92278F;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
