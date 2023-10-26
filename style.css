@@ -70,3 +70,34 @@
     /* background-color: lightblue; */
 
 }
+
+.right-side > .title h1 {
+    font-weight: bold;
+}
+
+.right-side > .content input[type="search"]:focus, .right-side > .content select:focus {
+    outline: none;
+}
+
+.right-side > .content input[type="search"] {
+    height: 40px;
+    width: 70%;
+    padding-left: 10px;
+}
+
+.right-side > .content select {
+    width: calc(28% - 4px);
+    height: 40px;
+    padding-left: 10px;
+    margin-left: 2%;
+}
+
+.right-side > .content input[type="button"] {
+    height: 40px;
+    padding: 0 20px;
+    margin-top: 30px;
+    background-color: var(--button-main-color);
+    cursor: pointer;
+    border: none;
+    color: white;
+}
