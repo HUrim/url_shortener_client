@@ -14,25 +14,18 @@
             </div>
             <div class="urls-display">
                 <p>My shortened URLs</p>
+                <!-- Urls will be displayed here -->
                 <div class="url-content">
                     <a href="https://shorturl.co/ckrDR">https://shorturl.co/ckrDR</a>
-                    <img src="./images/delete-icon.png" width="18px" alt="">
-                </div>
-                <div class="url-content">
-                    <a href="https://shorturl.co/ckrDR">https://shorturl.co/ckrDR</a>
-                    <img src="./images/delete-icon.png" width="18px" alt="">
-                </div>
-                <div class="url-content">
-                    <a href="https://shorturl.co/ckrDR">https://shorturl.co/ckrDR</a>
-                    <img src="./images/delete-icon.png" width="18px" alt="">
-                </div>
+                    <img src="./images/delete-icon.png" width="18px" onclick="deleteShortenedUrl(this)" alt="">
+                </div> 
             </div>
         </div>
         
         <div class="right-side">
             <div class="title"><h1>URL Shortener</h1></div>
             <div class="content">
-                <form id="shorten-url-form">
+                <form action="" id="shorten-url-form">
                     <input type="url" name="longUrl" id="longUrl" placeholder="Paste the URL to be shortened" />
                     <!-- <input type="text" placeholder="Add expiration date" /> -->
                     <select name="expirationTime" id="expirationTime" placeholder="Add expiration date" aria-selected="true">

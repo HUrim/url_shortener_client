@@ -51,12 +51,35 @@
     padding-bottom: 10px;
 }
 
+.urls-display {
+    width: 100%;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.urls-display::-webkit-scrollbar {
+    width: 2px;
+}
+
+.urls-display::-webkit-scrollbar-track {
+    background-color: var(--left-side-bg-color);
+}
+
+.urls-display::-webkit-scrollbar-thumb {
+    background-color: var(--button-main-color);
+}
+
 .urls-display .url-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 10px 16%;
+}
+
+.urls-display .url-content img {
+    width: 18px;
+    cursor: pointer;
 }
 
 .right-side {
