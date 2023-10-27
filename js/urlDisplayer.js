@@ -1,5 +1,5 @@
 let parent = document.querySelector('.urls-display');
-const getData = async () => {
+const getData = () => {
     fetch("http://localhost:5000/api/urls", {
         method: "GET"
     })
@@ -25,6 +25,11 @@ async function redirectFunc(aElement) {
         response = await fetch(`http://localhost:5000/api/${aElement}`, {
             method: "GET",
         })
+        // let data = await response.json();
+        if(response.status == 200)
+            window.location.href = await response.json();
+        else if (response.status == 410)
+            alert("Oooops! Url has expired!")
     } catch (error) {
         alert("Error: " + error)
     }

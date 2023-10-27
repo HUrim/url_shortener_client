@@ -2,7 +2,6 @@ let form = document.getElementById('shorten-url-form')
 document.getElementById('shorten-url').addEventListener('click', async () => {
     let startDate = new Date()    
     let formData = new FormData(form)
-    console.log([...formData])
     let dataObj = {};
     formData.forEach(function(value, key){
         dataObj[key] = value;

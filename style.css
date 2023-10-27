@@ -47,7 +47,7 @@
     overflow-y: scroll;
 }
 
-.left-side > .urls-display > p:first-child {
+.left-side > .urls-display > p {
     font-weight: bold;
     padding-bottom: 10px;
 }
@@ -70,6 +70,12 @@
     align-items: center;
     width: 100%;
     padding: 10px 16%;
+}
+
+.urls-display .url-content > a {
+    color: #0000EE;
+    border-bottom: 1px solid #0000EE;
+    cursor: pointer;
 }
 
 .urls-display .url-content img {
