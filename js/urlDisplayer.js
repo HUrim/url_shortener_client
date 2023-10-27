@@ -1,36 +1,39 @@
 let parent = document.querySelector('.urls-display');
-{/* <div class="url-content">
-    <a href="https://shorturl.co/ckrDR">https://shorturl.co/ckrDR</a>
-    <img src="./images/delete-icon.png" width="18px" alt="">
-</div> */}
 const getData = async () => {
     fetch("http://localhost:5000/api/urls", {
         method: "GET"
     })
     .then(response => response.json())
     .then(urlData => {
-        console.log(urlData.length)
-        urlData.map((url, index) => {
-            let urlContent = createElementItem("div", {_attribute: ["class"], _attributeContent: ["url-content"]})
-            let urlA = createElementItem("a", {_attribute: ["href", "onclick"], _attributeContent: [urlData[index]?.shortUrl, `redirectFunc(${url.longUrl})`]}, urlData[index]?.shortUrl);
-            let deleteImg = createElementItem("img", {_attribute: ["id", "src", "alt", "onclick"], _attributeContent: [`${url._id}`, "./images/delete-icon.png", "-", `deleteShortenedUrl(this)`]});
-            _elementAppendChild(urlContent, urlA);
-            _elementAppendChild(urlContent, deleteImg);
-            _elementAppendChild(parent, urlContent);
+        urlData.map((url) => {
+            let urlContentDiv = createElementItem("div", {_attribute: ["class"], _attributeContent: ["url-content"]})
+            let urlA = createElementItem("a", {_attribute: ["onclick"], _attributeContent: [`redirectFunc(this)`]}, url?.shortUrl);
+            let deleteImg = createElementItem("img", {_attribute: ["src", "alt", "onclick"], _attributeContent: ["./images/delete-icon.png", "-", "deleteShortenedUrl(this)"]});
+            _elementAppendChild(urlContentDiv, urlA);
+            _elementAppendChild(urlContentDiv, deleteImg);
+            _elementAppendChild(parent, urlContentDiv);
         })
     })
-    .catch(err => err)
+    .catch(err => alert("Error: " + err))
 }
 
 getData()
 
+async function redirectFunc(aElement) {
+    aElement = aElement.textContent.replace("http://localhost:5000/", "")
+    try {
+        response = await fetch(`http://localhost:5000/api/${aElement}`, {
+            method: "GET",
+        })
+    } catch (error) {
+        alert("Error: " + error)
+    }
+}
 async function deleteShortenedUrl(imgElement) {
     let urlContentParent = imgElement.parentElement;
-    console.log(urlContentParent)
     let shortUrl = urlContentParent.querySelector("a").textContent;
     let shortUrlObj = {}
     shortUrlObj.shortUrl = shortUrl
-    console.log(JSON.stringify(shortUrlObj))
     try {
         const response = await fetch('http://localhost:5000/api/', {
             method: 'DELETE',
@@ -39,14 +42,13 @@ async function deleteShortenedUrl(imgElement) {
             },
             body: JSON.stringify(shortUrlObj)
         });
-        console.log(response)
         if(response.ok) {
-            console.log('Record Deleted successfully')
+            location.reload()
         } else {
-            console.error('Failed to delete')
+            alert('Failed to delete the data!')
         }
     } catch (error) {
-        console.log(`Error: ${error}`)
+        alert(`Error: ${error}`)
     }
 }
 
