@@ -48,10 +48,15 @@
 
 .left-side > .urls-display > p:first-child {
     font-weight: bold;
+    padding-bottom: 10px;
 }
 
 .urls-display .url-content {
-    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16%;
 }
 
 .right-side {
@@ -75,11 +80,11 @@
     font-weight: bold;
 }
 
-.right-side > .content input[type="search"]:focus, .right-side > .content select:focus {
+.right-side > .content input[type="url"]:focus, .right-side > .content select:focus {
     outline: none;
 }
 
-.right-side > .content input[type="search"] {
+.right-side > .content input[type="url"] {
     height: 40px;
     width: 70%;
     padding-left: 10px;
@@ -90,6 +95,12 @@
     height: 40px;
     padding-left: 10px;
     margin-left: 2%;
+    cursor: pointer;
+}
+
+.right-side > .content select option {
+    position: absolute;
+    height: 40px !important;
 }
 
 .right-side > .content input[type="button"] {
@@ -100,4 +111,10 @@
     cursor: pointer;
     border: none;
     color: white;
+}
+
+.right-side > .content input[type="button"]:hover {
+    background-color: white;
+    color: var(--button-main-color);
+    border: 1px solid var(--button-main-color);
 }
